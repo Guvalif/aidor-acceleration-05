@@ -60,6 +60,8 @@ def enable_cors(fn):
 @router.route('/v3/image', method=['OPTIONS', 'GET'])
 @enable_cors
 def image_get():
+    [ camera.read() for _ in xrange(5) ]
+    
     _, frame = camera.read()
     _, image = imencode('.jpg', frame)
 
